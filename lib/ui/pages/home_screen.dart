@@ -1,9 +1,11 @@
 import 'package:facebook_clone/ui/pages/add_friend_screen.dart';
+import 'package:facebook_clone/ui/pages/chat/mesage_screen.dart';
 import 'package:facebook_clone/ui/pages/feed_screen.dart';
 import 'package:facebook_clone/ui/pages/market_place_screen.dart';
 import 'package:facebook_clone/ui/pages/notification_screen.dart';
 import 'package:facebook_clone/ui/pages/video_screen.dart';
 import 'package:facebook_clone/utils/constants.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -77,14 +79,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         );
                       },
                       child: _selectedTabIndex == 0
-                          ? const Padding(
-                              key: ValueKey<int>(0),
-                              padding: EdgeInsets.symmetric(horizontal: 10),
+                          ? Padding(
+                              key: const ValueKey<int>(0),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Row(
+                                  const Row(
                                     children: [
                                       Text(
                                         "facebook",
@@ -95,22 +98,34 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                       ),
                                     ],
                                   ),
-                                  Spacer(),
-                                  CircleAvatar(
+                                  const Spacer(),
+                                  const CircleAvatar(
+                                      backgroundColor: Colors.black,
                                       radius: 14,
                                       child: Icon(
                                         Icons.add,
                                         size: 20,
+                                        color: Colors.white,
                                       )),
-                                  SizedBox(width: 10),
-                                  Icon(
+                                  const SizedBox(width: 10),
+                                  const Icon(
                                     Icons.search,
                                     color: Colors.black,
                                   ),
-                                  SizedBox(width: 10),
-                                  Icon(
-                                    Icons.messenger_outline,
-                                    color: Colors.black,
+                                  const SizedBox(width: 10),
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const MessageScreen()),
+                                      );
+                                    },
+                                    child: const Icon(
+                                      Icons.messenger_outline,
+                                      color: Colors.black,
+                                    ),
                                   ),
                                 ],
                               ),
